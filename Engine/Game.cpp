@@ -28461,6 +28461,8 @@ void Game::ComposeFrame()
 
 			}
 		}
+
+		gfx.DrawCircle(400, 300, 100, Colors::Cyan);
 	}
 	else
 	{

@@ -26,6 +26,7 @@
 #include "Poo.h"
 #include "Player.h"
 #include "Cube.h"
+#include "FrameTimeMeasurer.h"
 #include <random>
 
 class Game
@@ -54,6 +55,7 @@ private:
 	std::uniform_real_distribution<float> yDist;
 	std::uniform_real_distribution<float> vxDist;
 	std::uniform_real_distribution<float> vyDist;
+	FrameTimeMeasurer ftm;
 	Player player;
 	bool isGameStarted = false;
 	static constexpr int sizeOfPoos = 30;

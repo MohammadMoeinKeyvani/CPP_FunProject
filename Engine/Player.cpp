@@ -349,23 +349,23 @@ void Player::Draw(Graphics & gfx) const
 
 }
 
-void Player::Update(const Keyboard & kbd)
+void Player::Update(const Keyboard & kbd, float deltaTime)
 {
 	if (kbd.KeyIsPressed(VK_UP))
 	{
-		y -= speed;
+		y -= speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += speed;
+		y += speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		x += speed;
+		x += speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= speed;
+		x -= speed * deltaTime;
 	}
 }
 

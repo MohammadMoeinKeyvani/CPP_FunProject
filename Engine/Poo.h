@@ -15,7 +15,7 @@ private:
 	bool isEaten = false;
 	//bool initialized = false;
 public:
-	void Update();
+	void Update(float deltaTime);
 	void Colliding(const Player& player);
 	void Draw(Graphics& gfx) const;
 	void Initializer(float xIn, float yIn, float vx, float vy);

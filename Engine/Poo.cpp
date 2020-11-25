@@ -19,10 +19,10 @@ void Poo::GameOver()
 	velocityOfY = 0;
 }
 
-void Poo::Update()
+void Poo::Update(float deltaTime)
 {
-	x += velocityOfX;
-	y += velocityOfY;
+	x += velocityOfX * deltaTime;
+	y += velocityOfY * deltaTime;
 
 	float right = x + width;
 	if (x <= 0)

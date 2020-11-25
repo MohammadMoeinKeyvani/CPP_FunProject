@@ -29,8 +29,8 @@ Game::Game(MainWindow& wnd)
 	randomNum(rd()),
 	xDist(0, 770),
 	yDist(0, 570),
-	vxDist(-2.0f, 2.0f),
-	vyDist(-2.0f, 2.0f)
+	vxDist(-2.0f * 60.0f, 2.0f * 60.0f),
+	vyDist(-2.0f * 60.0f, 2.0f * 60.0f)
 {
 	for (int i = 0; i < sizeOfPoos; i++)
 	{
@@ -48,16 +48,19 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+
+	const float deltaTime = ftm.Mark();
+
 	if (isGameStarted)
 	{
-		player.Update(wnd.kbd);
+		player.Update(wnd.kbd , deltaTime);
 
 		player.ClampScreen();
 
 		for (int i = 0; i < sizeOfPoos; i++)
 		{
 			poo[i].Colliding(player);
-			poo[i].Update();
+			poo[i].Update(deltaTime);
 		}
 
 		cube.Colliding(player);
@@ -28461,8 +28464,6 @@ void Game::ComposeFrame()
 
 			}
 		}
-
-		gfx.DrawCircle(400, 300, 100, Colors::Cyan);
 	}
 	else
 	{

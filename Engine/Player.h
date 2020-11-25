@@ -6,18 +6,18 @@
 class Player
 {
 private:
-	int x = 400;
-	int y = 300;
-	static constexpr int width = 20;
-	static constexpr int height = 20;
-	int speed = 1;
+	float x = 400;
+	float y = 300;
+	static constexpr float width = 20;
+	static constexpr float height = 20;
+	float speed = 1;
 public:
 	void ClampScreen();
 	void Draw(Graphics& gfx) const;
 	void Update( const Keyboard& kbd);
 	void GameOver();
-	int GetX() const;
-	int GetY() const;
-	static int GetWidth();
-	static int GetHeight();
+	float GetX() const;
+	float GetY() const;
+	static float GetWidth();
+	static float GetHeight();
 };

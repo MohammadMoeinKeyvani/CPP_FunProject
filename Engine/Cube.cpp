@@ -22,10 +22,10 @@ void Cube::Draw(Graphics& gfx)
 
 void Cube::Colliding(const Player & player)
 {
-	int playerRight = player.GetX() + player.GetWidth();
-	int playerBottom = player.GetY() + player.GetHeight();
-	int right = x + width;
-	int bottom = y + height;
+	float playerRight = player.GetX() + player.GetWidth();
+	float playerBottom = player.GetY() + player.GetHeight();
+	float right = x + width;
+	float bottom = y + height;
 
 	if (player.GetX() <= right &&
 		player.GetY() <= bottom &&

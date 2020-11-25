@@ -29,8 +29,8 @@ Game::Game(MainWindow& wnd)
 	randomNum(rd()),
 	xDist(0, 770),
 	yDist(0, 570),
-	vxDist(-1, 1),
-	vyDist(-1, 1)
+	vxDist(-2.0f, 2.0f),
+	vyDist(-2.0f, 2.0f)
 {
 	for (int i = 0; i < sizeOfPoos; i++)
 	{

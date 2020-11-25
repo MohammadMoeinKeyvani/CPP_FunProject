@@ -14,8 +14,8 @@ private:
 	std::uniform_int_distribution<int> yDist;
 	int x = xDist(randomNum);
 	int y = yDist(randomNum);
-	int width = 25;
-	int height = 25;
+	float width = 25;
+	float height = 25;
 	int collideCounter = 0;
 	bool isColliding = false;
 	bool isColorIncreasing = true;

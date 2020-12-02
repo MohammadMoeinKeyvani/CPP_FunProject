@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Graphics.h"
 #include "Colors.h"
+#include "Vector2.h"
 #include <random>
 
 class Cube
@@ -10,10 +11,9 @@ class Cube
 private:
 	std::random_device rd;
 	std::mt19937 randomNum;
-	std::uniform_int_distribution<int> xDist;
-	std::uniform_int_distribution<int> yDist;
-	int x = xDist(randomNum);
-	int y = yDist(randomNum);
+	std::uniform_real_distribution<float> xDist;
+	std::uniform_real_distribution<float> yDist;
+	Vector2 position = Vector2(xDist(randomNum), yDist(randomNum));
 	float width = 25;
 	float height = 25;
 	int collideCounter = 0;

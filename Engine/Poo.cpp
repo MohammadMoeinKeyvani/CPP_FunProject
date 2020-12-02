@@ -3,63 +3,61 @@
 #include "Player.h"
 #include <assert.h>
 
-void Poo::Initializer(float xIn, float yIn, float vx, float vy)
+void Poo::Initializer(const Vector2& pos, const Vector2& vel)
 {
 	//assert(initialized == false);
-	x = xIn;
-	y = yIn;
-	velocityOfX = vx;
-	velocityOfY = vy;
+	position = pos;
+	velocity = vel;
 	//initialized = true;
 }
 
 void Poo::GameOver()
 {
-	velocityOfX = 0;
-	velocityOfY = 0;
+	velocity.x = 0;
+	velocity.y = 0;
 }
 
 void Poo::Update(float deltaTime)
 {
-	x += velocityOfX * deltaTime;
-	y += velocityOfY * deltaTime;
+	position.x += velocity.x * deltaTime;
+	position.y += velocity.y * deltaTime;
 
-	float right = x + width;
-	if (x <= 0)
+	float right = position.x + width;
+	if (position.x <= 0)
 	{
-		x = 0;
-		velocityOfX = -velocityOfX;
+		position.x = 0;
+		velocity.x = -velocity.x;
 	}
 	else if (right >= float( Graphics::ScreenWidth ))
 	{
-		x = float(Graphics::ScreenWidth - 1) - width;
-		velocityOfX = -velocityOfX;
+		position.x = float(Graphics::ScreenWidth - 1) - width;
+		velocity.x = -velocity.x;
 	}
 
-	float bottom = y + height;
-	if (y <= 0)
+	float bottom = position.y + height;
+	if (position.y <= 0)
 	{
-		y = 0;
-		velocityOfY = -velocityOfY;
+		position.y = 0;
+		velocity.y = -velocity.y;
 	}
 	else if (bottom >= float( Graphics::ScreenHeight ))
 	{
-		y = float(Graphics::ScreenHeight - 1) - height;
-		velocityOfY = -velocityOfY;
+		position.y = float(Graphics::ScreenHeight - 1) - height;
+		velocity.y = -velocity.y;
 	}
 }
 
 void Poo::Colliding( const Player& player )
 {
-	const float right = player.GetX() + player.GetWidth();
-	const float bottom = player.GetY() + player.GetHeight();
-	const float pooRight = x + width;
-	const float pooBottom = y + height;
+	const float right = player.GetPosition().x + player.GetWidth();
+	const float bottom = player.GetPosition().y + player.GetHeight();
+	const float pooRight = position.x + width;
+	const float pooBottom = position.y + height;
 
-	if (x <= right &&
-		y <= bottom &&
-		pooRight >= player.GetX() &&
-		pooBottom >= player.GetY())
+	if (position.x <= right &&
+		position.y <= bottom &&
+		pooRight >= player.GetPosition().x &&
+		pooBottom >= player.GetPosition().y)
 	{
 		isEaten = true;
 	}
@@ -67,8 +65,8 @@ void Poo::Colliding( const Player& player )
 
 void Poo::Draw(Graphics & gfx) const
 {
-	const int x_int = int(x);
-	const int y_int = int(y);
+	const int x_int = int(position.x);
+	const int y_int = int(position.y);
 
 	gfx.PutPixel(14 + x_int, 0 + y_int, 138, 77, 0);
 	gfx.PutPixel(7 + x_int, 1 + y_int, 138, 77, 0);

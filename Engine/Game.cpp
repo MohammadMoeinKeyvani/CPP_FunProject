@@ -34,7 +34,7 @@ Game::Game(MainWindow& wnd)
 {
 	for (int i = 0; i < sizeOfPoos; i++)
 	{
-		poo[i].Initializer(xDist(randomNum), yDist(randomNum), vxDist(randomNum), vyDist(randomNum));
+		poo[i].Initializer(Vector2(xDist(randomNum), yDist(randomNum)), Vector2(vxDist(randomNum), vyDist(randomNum)));
 	}
 }
 

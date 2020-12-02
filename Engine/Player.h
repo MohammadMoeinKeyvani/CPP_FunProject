@@ -2,12 +2,12 @@
 
 #include "Graphics.h"
 #include "Keyboard.h"
+#include "Vector2.h"
 
 class Player
 {
 private:
-	float x = 400;
-	float y = 300;
+	Vector2 position = Vector2(400.0f, 300.0f);
 	static constexpr float width = 20;
 	static constexpr float height = 20;
 	float speed = 1 * 60.0f;
@@ -16,8 +16,7 @@ public:
 	void Draw(Graphics& gfx) const;
 	void Update( const Keyboard& kbd, float deltaTime);
 	void GameOver();
-	float GetX() const;
-	float GetY() const;
+	Vector2 GetPosition() const;
 	static float GetWidth();
 	static float GetHeight();
 };

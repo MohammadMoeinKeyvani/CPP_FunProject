@@ -3,31 +3,31 @@
 
 void Player::ClampScreen()
 {
-	float right = x + width;
-	if (x <= 0)
+	float right = position.x + width;
+	if (position.x <= 0.0)
 	{
-		x = 0;
+		position.x = 0.0;
 	}
 	else if (right >= float( Graphics::ScreenWidth ))
 	{
-		x = float(Graphics::ScreenWidth - 1) - width;
+		position.x = float(Graphics::ScreenWidth - 1) - width;
 	}
 
-	float bottom = y + height;
-	if (y <= 0)
+	float bottom = position.y + height;
+	if (position.y <= 0.0)
 	{
-		y = 0;
+		position.y = 0.0;
 	}
 	else if (bottom >= float( Graphics::ScreenHeight ))
 	{
-		y = float(Graphics::ScreenHeight - 1) - height;
+		position.y = float(Graphics::ScreenHeight - 1) - height;
 	}
 }
 
 void Player::Draw(Graphics & gfx) const
 {
-	const int x_int = int(x);
-	const int y_int = int(y);
+	const int x_int = int(position.x);
+	const int y_int = int(position.y);
 
 	gfx.PutPixel(7 + x_int, 0 + y_int, 0, 0, 0);
 	gfx.PutPixel(8 + x_int, 0 + y_int, 0, 0, 0);
@@ -353,19 +353,19 @@ void Player::Update(const Keyboard & kbd, float deltaTime)
 {
 	if (kbd.KeyIsPressed(VK_UP))
 	{
-		y -= speed * deltaTime;
+		position.y -= speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_DOWN))
 	{
-		y += speed * deltaTime;
+		position.y += speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		x += speed * deltaTime;
+		position.x += speed * deltaTime;
 	}
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		x -= speed * deltaTime;
+		position.x -= speed * deltaTime;
 	}
 }
 
@@ -374,14 +374,9 @@ void Player::GameOver()
 	speed = 0;
 }
 
-float Player::GetX() const
+Vector2 Player::GetPosition() const
 {
-	return x;
-}
-
-float Player::GetY() const
-{
-	return y;
+	return position;
 }
 
 float Player::GetWidth()

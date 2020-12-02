@@ -45,7 +45,11 @@ Vector2& Vector2::Normalized()
 Vector2 Vector2::GetNormalized()
 {
     const float length = GetLength();
-    return *this * (1.0f / length);
+    if (length != 0.0)
+    {
+        return *this * (1.0f / length);
+    }
+    return *this;
 }
 
 float Vector2::GetLength()

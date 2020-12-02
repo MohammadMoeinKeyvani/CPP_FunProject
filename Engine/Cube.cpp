@@ -11,9 +11,9 @@ Cube::Cube()
 
 void Cube::Draw(Graphics& gfx)
 {
-	for (int tempy = y; tempy < height + y; tempy++)
+	for (int tempy = int(position.y); tempy < height + int(position.y); tempy++)
 	{
-		for (int tempx = x; tempx < width + x; tempx++)
+		for (int tempx = int(position.x); tempx < width + int(position.x); tempx++)
 		{
 			gfx.PutPixel(tempx, tempy, color);
 		}
@@ -22,15 +22,15 @@ void Cube::Draw(Graphics& gfx)
 
 void Cube::Colliding(const Player & player)
 {
-	float playerRight = player.GetX() + player.GetWidth();
-	float playerBottom = player.GetY() + player.GetHeight();
-	float right = x + width;
-	float bottom = y + height;
+	float playerRight = player.GetPosition().x + player.GetWidth();
+	float playerBottom = player.GetPosition().y + player.GetHeight();
+	float right = position.x + width;
+	float bottom = position.y + height;
 
-	if (player.GetX() <= right &&
-		player.GetY() <= bottom &&
-		playerRight >= x &&
-		playerBottom >= y)
+	if (player.GetPosition().x <= right &&
+		player.GetPosition().y <= bottom &&
+		playerRight >= position.x &&
+		playerBottom >= position.y)
 	{
 		isColliding = true;
 		collideCounter++;
@@ -42,8 +42,8 @@ void Cube::Update()
 {
 	if (isColliding)
 	{
-		x = xDist(randomNum);
-		y = yDist(randomNum);
+		position.x = xDist(randomNum);
+		position.y = yDist(randomNum);
 		isColliding = false;
 	}
 

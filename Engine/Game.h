@@ -27,6 +27,7 @@
 #include "Player.h"
 #include "Cube.h"
 #include "FrameTimeMeasurer.h"
+#include "Vector2.h"
 #include <random>
 
 class Game

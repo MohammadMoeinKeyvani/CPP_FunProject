@@ -13,9 +13,9 @@ public:
 	Vector2 operator-(const Vector2& rightVec) const;
 	Vector2 operator-=(const Vector2& rightVec);
 	Vector2& Normalized();
-	Vector2 GetNormalized();
-	float GetLength();
-	float GetLengthSqure();
+	Vector2 GetNormalized() const;
+	float GetLength() const;
+	float GetLengthSqure() const;
 public:
 	float x;
 	float y;

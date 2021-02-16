@@ -42,7 +42,7 @@ Vector2& Vector2::Normalized()
     return *this = GetNormalized();
 }
 
-Vector2 Vector2::GetNormalized()
+Vector2 Vector2::GetNormalized() const
 {
     const float length = GetLength();
     if (length != 0.0)
@@ -52,12 +52,12 @@ Vector2 Vector2::GetNormalized()
     return *this;
 }
 
-float Vector2::GetLength()
+float Vector2::GetLength() const
 {
     return std::sqrt(GetLengthSqure());
 }
 
-float Vector2::GetLengthSqure()
+float Vector2::GetLengthSqure() const
 {
     return x * x + y * y;
 }

@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "Keyboard.h"
 #include "Vector2.h"
+#include "Mouse.h"
 
 class Player
 {
@@ -15,6 +16,7 @@ public:
 	void ClampScreen();
 	void Draw(Graphics& gfx) const;
 	void Update( const Keyboard& kbd, float deltaTime);
+	void Update( const Mouse& mouse, float deltaTime);
 	void GameOver();
 	Vector2 GetPosition() const;
 	static float GetWidth();

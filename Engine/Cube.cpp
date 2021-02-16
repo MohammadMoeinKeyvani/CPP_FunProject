@@ -60,7 +60,7 @@ void Cube::Update()
 	}
 	else
 	{
-		if (color.GetR() <= 100)
+		if (color.GetR() <= 10)
 		{
 			isColorIncreasing = true;
 		}

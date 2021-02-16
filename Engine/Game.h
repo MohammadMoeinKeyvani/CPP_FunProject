@@ -59,7 +59,7 @@ private:
 	FrameTimeMeasurer ftm;
 	Player player;
 	bool isGameStarted = false;
-	static constexpr int sizeOfPoos = 30;
+	static constexpr int sizeOfPoos = 10;
 	Poo poo[sizeOfPoos];
 	Cube cube;
 	/********************************/

@@ -351,21 +351,34 @@ void Player::Draw(Graphics & gfx) const
 
 void Player::Update(const Keyboard & kbd, float deltaTime)
 {
+	Vector2 velocity(0.0f, 0.0f);
 	if (kbd.KeyIsPressed(VK_UP))
 	{
-		position.y -= speed * deltaTime;
+		velocity.y -= 1.0f;
 	}
 	if (kbd.KeyIsPressed(VK_DOWN))
 	{
-		position.y += speed * deltaTime;
+		velocity.y += 1.0f;
 	}
 	if (kbd.KeyIsPressed(VK_RIGHT))
 	{
-		position.x += speed * deltaTime;
+		velocity.x += 1.0f;
 	}
 	if (kbd.KeyIsPressed(VK_LEFT))
 	{
-		position.x -= speed * deltaTime;
+		velocity.x -= 1.0f;
+	}
+
+	position += velocity.GetNormalized() * speed * deltaTime;
+}
+
+void Player::Update(const Mouse& mouse, float deltaTime)
+{
+	if (mouse.LeftIsPressed())
+	{
+		const Vector2 centerOfPlayer = position + Vector2(float(width) / 2.0f, float(height) / 2.0f);
+		const Vector2 toPointer = Vector2(float(mouse.GetPosX()), float(mouse.GetPosY())) - centerOfPlayer;
+		position += toPointer.GetNormalized() * speed * deltaTime;
 	}
 }
 

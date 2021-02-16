@@ -53,7 +53,7 @@ void Game::UpdateModel()
 
 	if (isGameStarted)
 	{
-		player.Update(wnd.kbd , deltaTime);
+		player.Update(wnd.mouse , deltaTime);
 
 		player.ClampScreen();
 
